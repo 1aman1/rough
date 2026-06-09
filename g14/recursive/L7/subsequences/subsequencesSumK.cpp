@@ -7,13 +7,13 @@ using namespace std;
 // O(2^N)
 // O(N)
 
-void subseqSumK(int idx, int sum, vector<int> &temp, const vector<int> &arr, const int K)
+void subseqSumK(int idx, int sum, vector<int> &candidates, const vector<int> &arr, const int K)
 {
     if (idx >= arr.size())
     {
         if (sum == K)
         {
-            for (const auto &e : temp)
+            for (const auto &e : candidates)
                 cout << e << " ";
             cout << endl;
         }
@@ -21,22 +21,22 @@ void subseqSumK(int idx, int sum, vector<int> &temp, const vector<int> &arr, con
     }
 
     sum += arr[idx];
-    temp.emplace_back(arr[idx]);
-    subseqSumK(idx + 1, sum, temp, arr, K);
+    candidates.emplace_back(arr[idx]);
+    subseqSumK(idx + 1, sum, candidates, arr, K);
 
     sum -= arr[idx];
-    temp.pop_back();
-    subseqSumK(idx + 1, sum, temp, arr, K);
+    candidates.pop_back();
+    subseqSumK(idx + 1, sum, candidates, arr, K);
 }
 
 int main()
 {
     vector<int> arr{0, 1, 2, 3};
-    vector<int> temp{};
+    vector<int> candidates{};
     const int K = 3;
     int sum = 0;
 
-    subseqSumK(0, sum, temp, arr, K);
+    subseqSumK(0, sum, candidates, arr, K);
 
     return 0;
 }

@@ -28,7 +28,6 @@ int subseqSumK(int idx, int sum, const vector<int> &arr, const int K)
 int main()
 {
     vector<int> arr{0, 1, 2, 3};
-    vector<int> temp{};
     const int K = 3;
     int sum = 0;
 

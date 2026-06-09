@@ -7,34 +7,34 @@ using namespace std;
 // O(2^N)  
 // O(N)
 
-void genSubsequences(int idx, vector<int> &temp, const vector<int> &arr)
+void genSubsequences(int idx, vector<int> &candidates, const vector<int> &arr)
 {
     if (idx >= arr.size())
     {
-        if (temp.empty())
+        if (candidates.empty())
             cout << "NULL";
         else
         {
-            for (const auto &e : temp)
+            for (const auto &e : candidates)
                 cout << e << "_";
         }
         cout << endl;
         return;
     }
 
-    temp.push_back(arr[idx]);
-    genSubsequences(idx + 1, temp, arr);
+    candidates.push_back(arr[idx]);
+    genSubsequences(idx + 1, candidates, arr);
 
-    temp.pop_back();
-    genSubsequences(idx + 1, temp, arr);
+    candidates.pop_back();
+    genSubsequences(idx + 1, candidates, arr);
 }
 
 int main()
 {
     vector<int> arr{1, 3, 5, 7};
-    vector<int> temp{};
+    vector<int> candidates{};
 
-    genSubsequences(0, temp, arr);
+    genSubsequences(0, candidates, arr);
 
     return 0;
 }
