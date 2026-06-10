@@ -10,6 +10,7 @@ void combinations(int idx, vector<int> &candidates, int target, const vector<int
         for (const auto &e : candidates)
             cout << e << " ";
         cout << "\n";
+        return;
     }
 
     if (idx >= arr.size())
@@ -27,8 +28,8 @@ void combinations(int idx, vector<int> &candidates, int target, const vector<int
 
 int main()
 {
-    vector<int> arr{2, 2, 3, 5, 8};
-    const int K = 8;
+    vector<int> arr{2, 2, 3};
+    const int K = 6;
     vector<int> candidates{};
     int target = K;
 
