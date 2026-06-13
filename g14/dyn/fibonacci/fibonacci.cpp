@@ -7,13 +7,13 @@ using namespace std;
 // O(2^N)
 // O(N)
 
-// int getNthFibonacci(int num)
-// {
-//     if (num <= 1)
-//         return num;
+int getNthFibonacci(int num)
+{
+    if (num <= 1)
+        return num;
 
-//     return getNthFibonacci(num - 1) + getNthFibonacci(num - 2);
-// }
+    return getNthFibonacci(num - 1) + getNthFibonacci(num - 2);
+}
 
 // #2
 // memoizes overlapping sub problems
@@ -62,21 +62,21 @@ using namespace std;
 // O(N)
 // O(1)
 
-int getNthFibonacci(int N)
-{
-    int prev2 = 0;
-    int prev = 1;
-    int curr;
+// int getNthFibonacci(int N)
+// {
+//     int prev2 = 0;
+//     int prev = 1;
+//     int curr;
 
-    for (int i = 2; i <= N; ++i)
-    {
-        curr = prev + prev2;
-        prev2 = prev;
-        prev = curr;
-    }
+//     for (int i = 2; i <= N; ++i)
+//     {
+//         curr = prev + prev2;
+//         prev2 = prev;
+//         prev = curr;
+//     }
 
-    return prev;
-}
+//     return prev;
+// }
 
 // 0 1 1 2 3 5 8 13 21 34 55
 // 1 2 3 4 5 6 7  8  9 10 11
@@ -85,12 +85,12 @@ int main()
 {
     const int N = 8;
 
-    // cout << getNthFibonacci(N-1);
+    cout << getNthFibonacci(N - 1);
 
     // vector<int> dp(N, -1);
     // cout << getNthFibonacci(N - 1, dp);
 
-    cout << getNthFibonacci(N - 1);
+    // cout << getNthFibonacci(N - 1);
 
     return 0;
 }
