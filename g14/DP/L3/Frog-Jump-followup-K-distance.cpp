@@ -86,34 +86,6 @@ using namespace std;
 //     return dp[idx];
 // }
 
-// #4
-// efficient tabulation
-// O(N)
-// O(1)
-
-int frogjump(int idx, const vector<int> &energy)
-{
-    int prev = 0;
-    int prev2 = 0;
-
-    for (int i = 1; i < idx; ++i)
-    {
-        int leftJump = -1, rightJump = 1000;
-
-        leftJump = abs(energy[i] - energy[i - 1]) + prev;
-        if (i > 1)
-        {
-            rightJump = abs(energy[i] - energy[i - 2]) + prev2;
-        }
-
-        int curr = min(leftJump, rightJump);
-        prev2 = prev;
-        prev = curr;
-    }
-
-    return prev;
-}
-
 int main()
 {
     vector<int> energy{30, 10, 60, 10, 60, 50};
@@ -131,7 +103,7 @@ int main()
     // cout << frogjump(N, energy)
     //      << endl;
 
-    cout << frogjump(N - 1, energy, K)
+    cout << frogjump(N - 1, energy)
          << endl;
 
     return 0;
