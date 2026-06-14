@@ -4,8 +4,8 @@ using namespace std;
 
 // #1
 // recomputes every subproblem, again and again, very inefficient
-// O(2^N)
-// O(N)
+// TC O(2^N)
+// SC O(N)
 
 int getNthFibonacci(int num)
 {
@@ -17,8 +17,8 @@ int getNthFibonacci(int num)
 
 // #2
 // memoizes overlapping sub problems
-// O(N)
-// O(N) + O(N)
+// TC O(2^N)
+// SC O(N) + O(N)
 
 // int getNthFibonacci(int num, vector<int> &dp)
 // {
@@ -40,8 +40,8 @@ int getNthFibonacci(int num)
 
 // #3
 // tabulation
-// O(N)
-// O(N)
+// TC O(2^N)
+// SC O(N)
 
 // int getNthFibonacci(int N)
 // {
@@ -59,8 +59,8 @@ int getNthFibonacci(int num)
 
 // #4
 // efficient tabulation
-// O(N)
-// O(1)
+// TC O(N)
+// SC O(1)
 
 // int getNthFibonacci(int N)
 // {

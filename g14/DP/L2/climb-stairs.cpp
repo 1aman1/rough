@@ -19,7 +19,7 @@ int waysToClimbStairs(int num)
 
 // #2
 // memoizes overlapping sub problems
-// O(N)
+// O(2^N)
 // O(N) + O(N)
 
 // int waysToClimbStairs(int num, vector<int> &dp)
