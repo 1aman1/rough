@@ -1,0 +1,156 @@
+================================================================================
+  DSA PREP PRIORITY — Senior Software Engineer (SSE) Interviews
+  Pick topics top-to-bottom. Stop wherever time runs out.
+  IN REPO = files exist here  |  ADD = needs to be created
+================================================================================
+
+Legend
+  [IN REPO]  solid coverage exists in this repo
+  [PARTIAL]  folder exists, needs more problems
+  [ADD]      no files yet — create when you reach this tier
+
+
+────────────────────────────────────────────────────────────────────────────────
+ TIER 1 — Always asked. Do not skip any of these.
+────────────────────────────────────────────────────────────────────────────────
+
+  Arrays & Hashing          [IN REPO]  Two Sum, Top-K, Valid Anagram, Group Anagrams,
+                                       Longest Consecutive Seq, Product Except Self
+
+  Two Pointers              [IN REPO]  3Sum, Container With Most Water, Trapping Rain Water,
+                                       Remove Duplicates, Valid Palindrome
+
+  Sliding Window            [IN REPO]  Longest Substring No Repeat, Min Window Substring,
+                                       Max Sliding Window, Permutation in String
+
+  Binary Search             [IN REPO]  Search Rotated Array, Find Min in Rotated,
+                                       Koko Eating Bananas (answer-space), Median of Two Arrays
+
+  Trees — Binary Tree       [IN REPO]  Invert, Max Depth, Diameter, Level Order BFS,
+                                       LCA, Max Path Sum, Serialize/Deserialize
+
+  Trees — BST               [IN REPO]  Validate BST, Kth Smallest, Insert/Delete,
+                                       BST Iterator, Convert Sorted List to BST
+
+  Linked Lists              [IN REPO]  Reverse, Detect Cycle, Merge Two Sorted,
+                                       Merge K Sorted, Reorder List, LRU Cache
+
+  Stacks                    [IN REPO]  Valid Parentheses, Min Stack, Daily Temperatures,
+                                       Largest Rectangle Histogram, Decode String
+
+
+────────────────────────────────────────────────────────────────────────────────
+ TIER 2 — Appear in most interview loops. High return on investment.
+────────────────────────────────────────────────────────────────────────────────
+
+  Graphs — BFS              [IN REPO]  Number of Islands, Rotting Oranges, Word Ladder,
+                                       Shortest Path Binary Matrix, Clone Graph
+
+  Graphs — DFS              [IN REPO]  Number of Islands, Pacific Atlantic, Surrounded Regions,
+                                       Walls and Gates, Max Area of Island
+
+  DP — 1D                   [IN REPO]  Climbing Stairs, House Robber, Coin Change,
+                                       Word Break, Longest Increasing Subsequence
+
+  DP — 2D                   [PARTIAL]  Unique Paths, Edit Distance, LCS,
+                                       Coin Change II, Target Sum  (add grid DP problems)
+
+  Heap / Priority Queue     [IN REPO]  Kth Largest, Top K Frequent, Find Median Stream,
+                                       Task Scheduler, K Closest Points
+
+  Backtracking              [PARTIAL]  Subsets, Permutations, Combinations, Word Search,
+                                       N-Queens, Sudoku Solver  (add more variants)
+
+
+────────────────────────────────────────────────────────────────────────────────
+ TIER 3 — Expected at senior level. Shows depth beyond mid-level.
+────────────────────────────────────────────────────────────────────────────────
+
+  Graphs — Topological Sort [ADD]      Course Schedule I & II, Alien Dictionary,
+                                       Build Order, Sequence Reconstruction
+
+  Graphs — Shortest Path    [ADD]      Dijkstra: Network Delay, Cheapest Flights K Stops
+                                       Bellman-Ford: negative weights
+
+  Greedy                    [PARTIAL]  Jump Game I & II, Gas Station, Meeting Rooms,
+                                       Partition Labels, Hand of Straights  (add more)
+
+  Trie                      [IN REPO]  Implement Trie, Word Search II, Design Add Search,
+                                       Replace Words, Stream of Characters
+
+  Union Find / DSU          [IN REPO]  Number of Provinces, Redundant Connection,
+                                       Number of Islands II, Accounts Merge
+
+  Sorting — internals       [IN REPO]  Merge Sort, Quick Sort, Counting Sort, Radix Sort
+                                       Know pivot selection, stability, time/space tradeoffs
+
+  String Algorithms         [ADD]      KMP (pattern match), Rabin-Karp (rolling hash),
+                                       Minimum Window Substring, Valid Palindrome II
+
+  Bit Manipulation          [IN REPO]  Single Number (XOR), Number of 1 Bits, Reverse Bits,
+                                       Power of Two, Missing Number, Sum of Two Integers
+
+
+────────────────────────────────────────────────────────────────────────────────
+ TIER 4 — Differentiators for L6+ / staff-track or system-design hybrid rounds.
+────────────────────────────────────────────────────────────────────────────────
+
+  Interval Problems         [ADD]      Merge Intervals, Insert Interval, Meeting Rooms II,
+                                       Non-overlapping Intervals, Employee Free Time
+
+  Matrix Patterns           [IN REPO]  Spiral Matrix, Rotate Image, Set Matrix Zeroes,
+                                       Search 2D Matrix, Game of Life
+
+  Monotonic Deque           [ADD]      Sliding Window Maximum (upgrade from monotonic stack),
+                                       Shortest Subarray with Sum >= K, Jump Game VI
+
+  DP on Trees               [ADD]      Diameter of Binary Tree (DP view), Max Path Sum,
+                                       House Robber III, Binary Tree Cameras
+
+  Divide & Conquer          [ADD]      Merge Sort (deep), Median of Two Sorted Arrays,
+                                       Count of Smaller Numbers After Self
+
+  Segment Trees             [ADD]      Range Sum Query Mutable, Range Min Query
+                                       (concept + implementation — rare in interviews but asked)
+
+  Fenwick Tree / BIT        [ADD]      Range Sum Query, Count of Smaller Numbers
+                                       (lighter than Segment Tree, easier to code under pressure)
+
+
+────────────────────────────────────────────────────────────────────────────────
+ TIER 5 — Rarely coded in interviews. Know the concept for system design rounds.
+────────────────────────────────────────────────────────────────────────────────
+
+  Mathematics               [IN REPO]  GCD/LCM, Prime Sieve, Modular Arithmetic,
+                                       Fast Exponentiation, Factorial Trailing Zeros
+
+  AVL / Red-Black Trees     [ADD]      No need to code. Know: why balanced, rotation concept,
+                                       O(log n) guarantee — relevant in DB/system design talks
+
+  B-Trees                   [ADD]      No code needed. Know: disk-based, DB index structure,
+                                       why DBs use B+ trees over binary trees
+
+  Minimum Spanning Tree     [ADD]      Kruskal (sort + DSU), Prim (min-heap)
+                                       Comes up in network/infrastructure problems
+
+  Strongly Connected Comps  [ADD]      Tarjan, Kosaraju — competitive coding; rarely in product
+                                       company interviews unless explicitly graph-heavy role
+
+  Geometry basics           [ADD]      Convex Hull concept, line intersection
+                                       Only for mapping / geo-spatial roles
+
+
+────────────────────────────────────────────────────────────────────────────────
+ PATTERNS — Learn these templates. They cut across all tiers.
+────────────────────────────────────────────────────────────────────────────────
+
+  Prefix Sum                two-pass trick; range sum in O(1) after O(n) build
+  Fast & Slow Pointer       Floyd cycle detection; also finds middle of list
+  BFS on Grid               4-dir / 8-dir; multi-source BFS start all sources at once
+  DFS + memoization         top-down DP; cache on (index, state) tuple
+  Binary search on answer   when asked "minimum X such that condition holds"
+  Monotonic stack           next greater / smaller element in O(n)
+  Backtracking template     choose → recurse → unchoose; prune early
+  Top-K with min-heap       maintain heap of size K; pop when oversized
+  Merge intervals           sort by start; extend or push based on overlap
+  Traversal order choice    pre-order = build/copy; in-order = sorted BST; post-order = delete/height

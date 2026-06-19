@@ -1,0 +1,11 @@
+problems pending
+array : Numbers of length N and value less than K
+      : rearrange array
+      : Max Distance
+      : Maximum Consecutive Gap
+      : next permutation
+      :
+      :
+math : Power Of Two Integers
+Stacks And Queues: Nearest Smaller Element
+Stacks And Queues: Simplify Directory Path
