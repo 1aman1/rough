@@ -1,171 +1,132 @@
-struct Node
-{
-    int val;
-    Node *next;
-
-    Node(int x) : val(x), next(nullptr)
-    {
-    }
-};
-
 class MyLinkedList
 {
+private:
+    struct Node
+    {
+        int val;
+        Node *next;
 
-    Node *head;
+        Node(int x) : val(x), next(nullptr) {}
+    };
+
+    Node *dummy;
+    Node *tail;
     int size;
+
+    Node *getPrevNode(int index)
+    {
+        Node *curr = dummy;
+
+        while (index--)
+        {
+            curr = curr->next;
+        }
+
+        return curr;
+    }
 
 public:
     MyLinkedList()
-    { // CTor
-        head = nullptr;
+    {
+        dummy = new Node(0);
+        tail = dummy;
         size = 0;
+    }
+
+    ~MyLinkedList()
+    {
+        Node *curr = dummy;
+
+        while (curr)
+        {
+            Node *temp = curr;
+            curr = curr->next;
+            delete temp;
+        }
     }
 
     int get(int index)
     {
-        // index validity for get
-        if (index < 0 || index > size - 1)
-            return -1;
-
-        Node *traverse = head;
-
-        while (index)
+        if (index < 0 || index >= size)
         {
-            // iterate to the index
-            traverse = traverse->next;
-            --index;
+            return -1;
         }
 
-        return traverse->val;
+        Node *curr = dummy->next;
+
+        while (index--)
+        {
+            curr = curr->next;
+        }
+
+        return curr->val;
     }
 
     void addAtHead(int val)
     {
         Node *newNode = new Node(val);
 
-        newNode->next = head;
-        head = newNode;
+        newNode->next = dummy->next;
+        dummy->next = newNode;
 
         ++size;
+        if (size == 1)
+        {
+            tail = newNode;
+        }
     }
 
     void addAtTail(int val)
     {
         Node *newNode = new Node(val);
 
-        // if list is empty
-        if (!head)
-        {
-            head = newNode;
-        }
-
-        // traverse till the end and append new node
-        else
-        {
-            Node *tmp = head;
-
-            // iterate to the index
-            while (tmp->next)
-            {
-                tmp = tmp->next;
-            }
-            tmp->next = newNode;
-        }
+        tail->next = newNode;
+        tail = newNode;
 
         ++size;
     }
 
     void addAtIndex(int index, int val)
     {
-        // index validity for add
         if (index < 0 || index > size)
+        {
             return;
+        }
 
-        if (index == 0)
+        if (index == size)
         {
-            addAtHead(val);
+            addAtTail(val);
+            return;
         }
 
-        /* Need to debug
-        else if ( index == size )  {
-            addAtTail ( val );
-        }
-        */
+        Node *prev = getPrevNode(index);
 
-        else
-        {
-            // using two pointers
-            // prePtr closely follows currPtr
+        Node *newNode = new Node(val);
 
-            Node *prePtr, *currPtr;
-
-            prePtr = currPtr = head;
-
-            // iterate to the index
-            while (index)
-            {
-                prePtr = currPtr;
-                currPtr = currPtr->next;
-                --index;
-            }
-
-            // node in currPtr needs to be shifted forward
-            // adjust prePtr->next and newNode->next to maintain list
-
-            Node *newNode = new Node(val);
-            prePtr->next = newNode;
-            newNode->next = currPtr;
-        }
+        newNode->next = prev->next;
+        prev->next = newNode;
 
         ++size;
     }
 
     void deleteAtIndex(int index)
     {
-        // index validity for delete
-        if (index < 0 || index > size - 1)
+        if (index < 0 || index >= size)
         {
             return;
         }
 
-        Node *prePtr = nullptr, *currPtr = nullptr;
+        Node *prev = getPrevNode(index);
+        Node *nodeToDelete = prev->next;
 
-        if (index == 0)
+        prev->next = nodeToDelete->next;
+
+        if (nodeToDelete == tail)
         {
-            // delete first element
-            currPtr = head;
-            head = head->next;
+            tail = prev;
         }
 
-        else
-        {
-
-            prePtr = nullptr;
-            currPtr = head;
-
-            // iterate to the index
-            while (index)
-            {
-                prePtr = currPtr;
-                currPtr = currPtr->next;
-                --index;
-            }
-            // currPtr holds pointer to the node that has to be deleted
-            // adjust prePtr && currPtr->next
-            prePtr->next = currPtr->next;
-        }
-
-        delete currPtr;
+        delete nodeToDelete;
         --size;
     }
 };
-
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList* obj = new MyLinkedList();
- * int param_1 = obj->get(index);
- * obj->addAtHead(val);
- * obj->addAtTail(val);
- * obj->addAtIndex(index,val);
- * obj->deleteAtIndex(index);
- */
