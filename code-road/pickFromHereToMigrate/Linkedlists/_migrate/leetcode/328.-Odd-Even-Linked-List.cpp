@@ -13,17 +13,7 @@ class Solution
 public:
     ListNode *oddEvenList(ListNode *head)
     {
-        /*
-        we will inter weave the list so that the nodes at even position are adjacent to one another,
-        like wise for odd nodes
-
-        1. keep odd to first node, even to odd->next node
-        2. store even head to append to the list later
-        3. update pointers in a way that odd points to node next to next, same for even
-        4. Once sequencing done, append the even list to odd list in the end
-        */
-
-        if (!head)
+        if (!head || !head->next)
             return head;
 
         ListNode *odd, *even, *evenHead;

@@ -9,7 +9,7 @@ public:
         ListNode *slow = head;
         ListNode *fast = head;
 
-        while (fast && fast->next && fast->next->next)
+        while (fast->next && fast->next->next)
         {
             slow = slow->next;
             fast = fast->next->next;

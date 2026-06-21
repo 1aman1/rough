@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-
 class Solution
 {
 public:
@@ -28,14 +23,3 @@ public:
         return slow_x;
     }
 };
-
-int main()
-{
-    Solution obj;
-
-    std::vector<int> nums = {1, 3, 4, 2, 2};
-
-    std::cout << obj.findDuplicate(nums) << std::endl;
-
-    return 0;
-}

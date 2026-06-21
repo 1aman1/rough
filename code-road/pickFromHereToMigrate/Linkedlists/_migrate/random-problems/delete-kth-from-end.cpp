@@ -15,7 +15,7 @@ struct node_t
     node_t *next;
 
     node_t() = delete;
-    node_t(int v) : data(v), next(nullptr){};
+    node_t(int v) : data(v), next(nullptr) {};
 };
 
 struct list_t
@@ -68,14 +68,14 @@ void list_t::insert(int newData)
 
 //_____SOLUTION______//
 
-void list_t::remove_kth_from_back(int pos)
+void list_t::remove_kth_from_back(int K)
 {
     node_t *slow = head;
     node_t *fast = head;
 
-    while (pos >= 0)
+    while (K >= 0)
     {
-        --pos;
+        --K;
         fast = fast->next;
     }
 
@@ -95,14 +95,14 @@ int main()
 
     list_t obj;
 
-    for (int i = 50; i > 0; i -= 5)
+    for (int i = 50; i > 0; i -= 10)
     {
         obj.insert(i);
     }
 
     // obj.print();
-    int pos = 3;
-    obj.remove_kth_from_back(pos);
+    int K = 3;
+    obj.remove_kth_from_back(K);
 
     obj.print();
 
