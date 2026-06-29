@@ -9,7 +9,7 @@ using namespace std;
 
 int waysToClimbStairs(int num)
 {
-    if (num == 1 || num == 0)
+    if (num <= 1)
     {
         return 1;
     }
@@ -19,20 +19,16 @@ int waysToClimbStairs(int num)
 
 // #2
 // memoizes overlapping sub problems
-// O(2^N)
+// O(N)
 // O(N) + O(N)
 
 // int waysToClimbStairs(int num, vector<int> &dp)
 // {
-//     if (num == 1 || num == 0)
-//     {
+//     if (num <= 1)
 //         return dp[num] = 1;
-//     }
 
 //     if (dp[num] != -1)
-//     {
 //         return dp[num];
-//     }
 
 //     return dp[num] = waysToClimbStairs(num - 1, dp) + waysToClimbStairs(num - 2, dp);
 // }
@@ -44,6 +40,9 @@ int waysToClimbStairs(int num)
 
 // int waysToClimbStairs(int num)
 // {
+//     if (num <= 1)
+//         return 1;
+
 //     vector<int> dp(num + 1, -1);
 
 //     dp[0] = 1;
@@ -64,6 +63,9 @@ int waysToClimbStairs(int num)
 
 // int waysToClimbStairs(int num)
 // {
+//     if (num <= 1)
+//         return 1;
+
 //     int prev2 = 1;
 //     int prev = 1;
 //     int curr;
@@ -80,7 +82,7 @@ int waysToClimbStairs(int num)
 
 int main()
 {
-    int stairs = 2;
+    int stairs = 4;
 
     cout << waysToClimbStairs(stairs)
          << endl;

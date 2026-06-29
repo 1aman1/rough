@@ -17,7 +17,7 @@ int getNthFibonacci(int num)
 
 // #2
 // memoizes overlapping sub problems
-// TC O(2^N)
+// TC O(N)
 // SC O(N) + O(N)
 
 // int getNthFibonacci(int num, vector<int> &dp)
@@ -40,14 +40,14 @@ int getNthFibonacci(int num)
 
 // #3
 // tabulation
-// TC O(2^N)
+// TC O(N)
 // SC O(N)
 
 // int getNthFibonacci(int N)
 // {
 //     vector<int> dp(N, -1);
 
-//     dp[0] = 1;
+//     dp[0] = 0;
 //     dp[1] = 1;
 
 //     for (int i = 2; i < N; ++i)

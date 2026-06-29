@@ -14,20 +14,21 @@ int frogjump(int idx, const vector<int> &energy)
     if (idx == 0)
         return 0;
 
-    int leftJump = -1, rightJump = INT_MAX;
+    int smallJump;
+    int biggerJump = INT_MAX;
 
-    leftJump = abs(energy[idx] - energy[idx - 1]) + frogjump(idx - 1, energy);
+    smallJump = abs(energy[idx] - energy[idx - 1]) + frogjump(idx - 1, energy);
     if (idx > 1)
     {
-        rightJump = abs(energy[idx] - energy[idx - 2]) + frogjump(idx - 2, energy);
+        biggerJump = abs(energy[idx] - energy[idx - 2]) + frogjump(idx - 2, energy);
     }
 
-    return min(leftJump, rightJump);
+    return min(smallJump, biggerJump);
 }
 
 // #2
 // memoizes overlapping sub problems
-// TC O(2^N)
+// TC O(N)
 // O(N) + O(N)
 
 // int frogjump(int idx, const vector<int> &energy, vector<int> &dp)
@@ -37,24 +38,24 @@ int frogjump(int idx, const vector<int> &energy)
 
 //     if (dp[idx] != -1)
 //     {
-//         cout << idx << " energy saved\n";
+//         // cout << idx << " energy saved\n";
 //         return dp[idx];
 //     }
 
-//     int leftJump = -1, rightJump = INT_MAX;
+//     int smallJump = -1, biggerJump = INT_MAX;
 
-//     leftJump = abs(energy[idx] - energy[idx - 1]) + frogjump(idx - 1, energy, dp);
+//     smallJump = abs(energy[idx] - energy[idx - 1]) + frogjump(idx - 1, energy, dp);
 //     if (idx > 1)
 //     {
-//         rightJump = abs(energy[idx] - energy[idx - 2]) + frogjump(idx - 2, energy, dp);
+//         biggerJump = abs(energy[idx] - energy[idx - 2]) + frogjump(idx - 2, energy, dp);
 //     }
 
-//     return dp[idx] = min(leftJump, rightJump);
+//     return dp[idx] = min(smallJump, biggerJump);
 // }
 
 // #3
 // tabulation
-// TC O(2^N)
+// TC O(N)
 // SC O(N)
 
 // int frogjump(int idx, const vector<int> &energy)
@@ -65,14 +66,14 @@ int frogjump(int idx, const vector<int> &energy)
 
 //     for (int i = 1; i < idx; ++i)
 //     {
-//         int leftJump = -1, rightJump = INT_MAX;
+//         int smallJump = -1, biggerJump = INT_MAX;
 
-//         leftJump = abs(energy[i] - energy[i - 1]) + dp[i - 1];
+//         smallJump = abs(energy[i] - energy[i - 1]) + dp[i - 1];
 //         if (i > 1)
 //         {
-//             rightJump = abs(energy[i] - energy[i - 2]) + dp[i - 2];
+//             biggerJump = abs(energy[i] - energy[i - 2]) + dp[i - 2];
 //         }
-//         dp[i] = min(leftJump, rightJump);
+//         dp[i] = min(smallJump, biggerJump);
 //     }
 
 //     return dp[idx - 1];
@@ -83,23 +84,22 @@ int frogjump(int idx, const vector<int> &energy)
 // O(N)
 // O(1)
 
-// int frogjump(int idx, const vector<int> &energy)
+// int frogjump(int N, const vector<int> &energy)
 // {
 //     int curr = 0;
 //     int prev = 0;
 //     int prev2 = 0;
 
-//     for (int i = 1; i < idx; ++i)
+//     for (int i = 1; i < N; i++)
 //     {
-//         int leftJump = -1, rightJump = INT_MAX;
+//         int smallJump = abs(energy[i] - energy[i - 1]) + prev;
 
-//         leftJump = abs(energy[i] - energy[i - 1]) + prev;
+//         int biggerJump = INT_MAX;
 //         if (i > 1)
-//         {
-//             rightJump = abs(energy[i] - energy[i - 2]) + prev2;
-//         }
+//             biggerJump = abs(energy[i] - energy[i - 2]) + prev2;
 
-//         curr = min(leftJump, rightJump);
+//         curr = min(smallJump, biggerJump);
+
 //         prev2 = prev;
 //         prev = curr;
 //     }
@@ -109,16 +109,17 @@ int frogjump(int idx, const vector<int> &energy)
 
 int main()
 {
-    vector<int> energy{30, 10, 60, 10, 60, 50};
+    // vector<int> energy{30, 10, 60, 10, 60, 50};
+    vector<int> energy{30, 10};
 
     int N = energy.size();
 
-    cout << frogjump(N, energy)
-         << endl;
-
-    // vector<int> dp(N, -1);
-    // cout << frogjump(N - 1, energy, dp)
+    // cout << frogjump(N - 1, energy)
     //      << endl;
+
+    vector<int> dp(N, -1);
+    cout << frogjump(N - 1, energy, dp)
+         << endl;
 
     // cout << frogjump(N, energy)
     //      << endl;

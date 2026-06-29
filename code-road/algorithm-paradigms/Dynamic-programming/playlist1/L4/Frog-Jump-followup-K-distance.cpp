@@ -20,7 +20,9 @@ using namespace std;
 //     {
 //         if (idx - j >= 0)
 //         {
-//             int thisJumpEnergy = abs(energy[idx] - energy[idx - j]) + frogjump(idx - j, K, energy);
+//             int thisJumpEnergy = abs(energy[idx] - energy[idx - j]) +
+//                                  frogjump(idx - j, K, energy);
+
 //             minJumpEnergy = min(minJumpEnergy, thisJumpEnergy);
 //         }
 //     }
@@ -40,7 +42,7 @@ using namespace std;
 
 //     if (dp[idx] != -1)
 //     {
-//         cout << idx << "skipped\n ";
+//         // cout << idx << "skipped\n ";
 //         return dp[idx];
 //     }
 
@@ -49,7 +51,9 @@ using namespace std;
 //     {
 //         if (idx - j >= 0)
 //         {
-//             int thisJumpEnergy = abs(energy[idx] - energy[idx - j]) + frogjump(idx - j, energy, dp, K);
+//             int thisJumpEnergy = abs(energy[idx] - energy[idx - j]) +
+//                                  frogjump(idx - j, energy, dp, K);
+
 //             minJumpEnergy = min(minJumpEnergy, thisJumpEnergy);
 //         }
 //     }
@@ -64,11 +68,11 @@ using namespace std;
 
 // int frogjump(int idx, const vector<int> &energy, const int &K)
 // {
-//     vector<int> dp(idx + 1, -1);
+//     vector<int> dp(idx, -1);
 
 //     dp[0] = 0;
 
-//     for (int i = 1; i <= idx; ++i)
+//     for (int i = 1; i < idx; ++i)
 //     {
 //         int minJumpEnergy = INT_MAX;
 
@@ -83,7 +87,7 @@ using namespace std;
 //         dp[i] = minJumpEnergy;
 //     }
 
-//     return dp[idx];
+//     return dp[idx - 1];
 // }
 
 int main()
@@ -91,20 +95,17 @@ int main()
     vector<int> energy{30, 10, 60, 10, 60, 50};
 
     int N = energy.size();
-    int K = 2;
+    int K = 5;
 
     // cout << frogjump(N - 1, K, energy)
     //      << endl;
 
-    // vector<int> dp(N, -1);
-    // cout << frogjump(N - 1, energy, dp, K)
-    //      << endl;
-
-    // cout << frogjump(N, energy)
-    //      << endl;
-
-    cout << frogjump(N - 1, energy)
+    vector<int> dp(N, -1);
+    cout << frogjump(N - 1, energy, dp, K)
          << endl;
+
+    // cout << frogjump(N, energy, K)
+    //      << endl;
 
     return 0;
 }

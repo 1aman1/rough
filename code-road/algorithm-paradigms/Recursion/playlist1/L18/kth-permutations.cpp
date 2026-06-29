@@ -5,12 +5,11 @@ using namespace std;
 
 string getKthPerm(int k, int N)
 {
-    k--;
-
-    int N = 10;
     vector<int> numbers;
 
     int fact = 1;
+    k--;
+
     for (int i = 1; i < N; ++i)
     {
         fact *= i;
@@ -31,13 +30,14 @@ string getKthPerm(int k, int N)
         k %= fact;
         fact = fact / numbers.size();
     }
+
     return ans;
 }
 
 int main()
 {
-    int N = 24;
-    int K = 17;
+    int N = 3;
+    int K = 3;
 
     cout << getKthPerm(K, N);
 
