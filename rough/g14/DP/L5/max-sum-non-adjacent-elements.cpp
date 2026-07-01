@@ -72,8 +72,8 @@ int solve(vector<int> nums)
 
 int main()
 {
-    // vector<int> nums{2, 1, 4, 9};  // 11
-    vector<int> nums{1, 2, 4}; // 5
+    vector<int> nums{2, 1, 4, 9};  // 11
+    // vector<int> nums{1, 2, 4}; // 5
     vector<int> dp(nums.size(), -1);
 
     // cout << solve(nums.size() - 1, dp, nums);
