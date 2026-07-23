@@ -6,22 +6,22 @@ using namespace std;
 // TC : O(2^(m+n))
 // SC : O(m+n)
 
-// int totalPathsRec(int row, int col, const vector<vector<int>> &grid)
-// {
-//     if (row < 0 || col < 0)
-//         return 0;
-//
-//     if (grid[row][col] == -1)
-//         return 0;
-//
-//     if (row == 0 && col == 0)
-//         return 1;
-//
-//     int up = totalPathsRec(row - 1, col, grid);
-//     int left = totalPathsRec(row, col - 1, grid);
-//
-//     return up + left;
-// }
+int totalPathsRec(int row, int col, const vector<vector<int>> &grid)
+{
+    if (row < 0 || col < 0)
+        return 0;
+
+    if (grid[row][col] == -1)
+        return 0;
+
+    if (row == 0 && col == 0)
+        return 1;
+
+    int up = totalPathsRec(row - 1, col, grid);
+    int left = totalPathsRec(row, col - 1, grid);
+
+    return up + left;
+}
 
 // #2 Memoization
 // TC : O(m*n)
@@ -143,23 +143,24 @@ int main()
 {
     vector<vector<int>> grid = {
         {0, 0, 0},
-        {0, -1, 0},
+        {0, 0, 0},
         {0, 0, 0}};
 
     int rows = grid.size();
     int cols = grid[0].size();
+
+    cout << totalPathsRec(rows - 1, cols - 1, grid)
+         << endl;
 
     vector<vector<int>> dp(rows, vector<int>(cols, -1));
 
     cout << totalPathsMemo(rows - 1, cols - 1, grid, dp)
          << endl;
 
-    cout << "Tabulation       : "
-         << totalPathsTab(rows, cols, grid)
+    cout << totalPathsTab(rows, cols, grid)
          << endl;
 
-    cout << "Space Optimized  : "
-         << totalPathsSpace(rows, cols, grid)
+    cout << totalPathsSpace(rows, cols, grid)
          << endl;
 
     return 0;
