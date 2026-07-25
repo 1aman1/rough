@@ -24,7 +24,7 @@ private:
     ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     {
         if (list1 == nullptr || list2 == nullptr)
-            retuwrn list1 != nullptr ? list1 : list2;
+            return list1 != nullptr ? list1 : list2;
 
         if (list1->val > list2->val)
             swap(list1, list2);

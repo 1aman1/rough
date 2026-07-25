@@ -13,15 +13,17 @@ class Solution
 public:
   ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
   {
-    if (list1 == nullptr || list2 == nullptr)
-      return list1 != nullptr ? list1 : list2;
+    if (!list1)
+      return list2;
+    if (!list2)
+      return list1;
 
-    ListNode *dummyHead = new ListNode(0);
-    ListNode *curr = dummyHead;
-    
+    ListNode dummyHead(0);
+    ListNode *curr = &dummyHead;
+
     while (list1 && list2)
     {
-      if (list1->val < list2->val)
+      if (list1->val <= list2->val)
       {
         curr->next = list1;
         list1 = list1->next;
@@ -33,11 +35,11 @@ public:
       }
       curr = curr->next;
     }
-    
+
     curr->next = list1 ? list1 : list2;
-    
-    ListNode *newHead = dummyHead->next;
-    delete dummyHead;
-    return newHead;
+
+    // ListNode *newHead = dummyHead->next;
+    // delete dummyHead;
+    return dummyHead.next;
   }
 };
