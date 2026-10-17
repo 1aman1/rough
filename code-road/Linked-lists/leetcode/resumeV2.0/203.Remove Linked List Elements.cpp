@@ -13,8 +13,8 @@ class Solution
 public:
     ListNode *removeElements(ListNode *head, int val)
     {
-        ListNode *dummy = new ListNode(0, head);
-        ListNode *curr = dummy;
+        ListNode dummy(0, head);
+        ListNode *curr = &dummy;
 
         while (curr->next)
         {
@@ -30,9 +30,6 @@ public:
             }
         }
 
-        ListNode *newHead = dummy->next;
-        delete dummy;
-
-        return newHead;
+        return dummy.next;
     }
 };

@@ -3,24 +3,13 @@ class Solution
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
     {
-        /*
-        two list heads are given,
-        1. we will gather length of the two different lists by keeping one counter
-        prepare two pointers A,B so that we can move either of them based on the
-        length difference
-        traverse two lists at same time,
-        match their next pointers and break the loop if they same/ intersecting
-        */
-
         if (!headA || !headB)
             return nullptr;
 
-        // 1.
-        ListNode *traverseA = nullptr, *traverseB = nullptr;
         int lengthA, lengthB, diff;
 
-        traverseA = headA;
-        traverseB = headB;
+        ListNode *traverseA = headA;
+        ListNode *traverseB = headB;
         lengthA = lengthB = 0;
 
         while (traverseA)
@@ -34,26 +23,21 @@ public:
             traverseB = traverseB->next;
         }
 
-        (lengthA < lengthB ? diff = lengthB - lengthA : diff = lengthA - lengthB);
-
-        // move the pointer of longer list
+        diff = abs(lengthA - lengthB);
 
         traverseA = headA;
         traverseB = headB;
 
         if (lengthA > lengthB)
         {
-
-            while (diff)
+            while (diff--)
             {
                 traverseA = traverseA->next;
-                --diff;
             }
         }
         else
         {
-
-            while (diff)
+            while (diff--)
             {
                 traverseB = traverseB->next;
                 --diff;
@@ -61,7 +45,6 @@ public:
         }
 
         // return the node when inntersection found
-
         while (traverseA && traverseB)
         {
             if (traverseA == traverseB)

@@ -9,15 +9,6 @@
  * };
  */
 
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
 class Solution
 {
 public:
@@ -35,7 +26,7 @@ public:
         }
         else
         {
-            list2->next = mergeTwoLists(list1, list2->next);
+            list2->next = mergeTwoLists(list2->next, list1);
             return list2;
         }
     }

@@ -26,15 +26,13 @@ private:
     }
 
 public:
-    MyLinkedList()
-    {
-        dummy = new Node(0);
-        tail = dummy;
-        size = 0;
-    }
+    MyLinkedList() : dummy(new Node(0)), tail(dummy), size(0) {}
 
     ~MyLinkedList()
     {
+        if (!dummy)
+            return;
+
         Node *curr = dummy;
 
         while (curr)
@@ -45,7 +43,7 @@ public:
         }
     }
 
-    int get(int index)
+    int get(int index) const
     {
         if (index < 0 || index >= size)
         {
@@ -93,6 +91,11 @@ public:
             return;
         }
 
+        if (index == 0)
+        {
+            addAtHead(val);
+            return;
+        }
         if (index == size)
         {
             addAtTail(val);

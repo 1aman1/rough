@@ -13,12 +13,16 @@ class Solution
 public:
   ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
   {
-    if (!list1)
-      return list2;
-    if (!list2)
+    if (list2 == nullptr)
+    {
       return list1;
+    }
+    if (list1 == nullptr)
+    {
+      return list2;
+    }
 
-    ListNode dummyHead(0);
+    ListNode dummyHead(-1);
     ListNode *curr = &dummyHead;
 
     while (list1 && list2)
@@ -38,8 +42,6 @@ public:
 
     curr->next = list1 ? list1 : list2;
 
-    // ListNode *newHead = dummyHead->next;
-    // delete dummyHead;
     return dummyHead.next;
   }
 };

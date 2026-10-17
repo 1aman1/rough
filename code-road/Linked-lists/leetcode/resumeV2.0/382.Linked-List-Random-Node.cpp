@@ -8,36 +8,29 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 private:
-    ListNode *head;
-
+    ListNode* head;
+    
 public:
-    Solution(ListNode *head)
-    {
+    Solution(ListNode* head) {
         this->head = head;
     }
-
-    int getRandom()
-    {
+    
+    int getRandom() {
         int count = 0;
         int result = 0;
-
-        for (ListNode *current = head; current != nullptr; current = current->next)
-        {
+        
+        for (ListNode* current = head; current != nullptr; current = current->next) {
             count++;
-
-            // Generate random number between 1 and count (inclusive)
+            
+            // Reservoir Sampling: probability of selecting current node is 1/count
             int randomIndex = 1 + rand() % count;
-
-            // Replace result with current node's value with probability 1/count
-            if (randomIndex == count)
-            {
+            if (randomIndex == count) {
                 result = current->val;
             }
         }
-
+        
         return result;
     }
 };

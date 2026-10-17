@@ -16,12 +16,12 @@ public:
         if (head == nullptr || head->next == nullptr)
             return head;
 
-        // reverse the list here
         ListNode *prev, *curr, *NEXT;
 
         curr = head;
         prev = nullptr;
         NEXT = nullptr;
+
         while (curr)
         {
             NEXT = curr->next;
@@ -29,8 +29,6 @@ public:
             prev = curr;
             curr = NEXT;
         }
-        // when curr goes NULL, prev is the pointer that holds recent list.
-        head = prev;
-        return head;
+        return prev;
     }
 };

@@ -13,21 +13,21 @@ class Solution
 public:
   ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
   {
-    ListNode *dummy = new ListNode(0);
-    ListNode *currNode = dummy;
+    ListNode resultHead(-1);
+    ListNode *traverseResult = &resultHead;
 
     int carry = 0;
 
     while (l1 || l2 || carry)
     {
-      int l1Val = (l1 != nullptr) ? l1->val : 0;
-      int l2Val = (l2 != nullptr) ? l2->val : 0;
+      int digit1 = l1 ? l1->val : 0;
+      int digit2 = l2 ? l2->val : 0;
 
-      int sum = l1Val + l2Val + carry;
-      carry = sum / 10;
+      int sum = digit1 + digit2 + carry;
+      carry = (sum > 9) ? 1 : 0;
 
-      currNode->next = new ListNode(sum % 10);
-      currNode = currNode->next;
+      traverseResult->next = new ListNode(sum % 10);
+      traverseResult = traverseResult->next;
 
       if (l1)
         l1 = l1->next;
@@ -35,6 +35,6 @@ public:
         l2 = l2->next;
     }
 
-    return dummy->next;
+    return resultHead.next;
   }
 };

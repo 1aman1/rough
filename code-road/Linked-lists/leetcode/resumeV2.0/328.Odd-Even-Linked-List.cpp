@@ -18,23 +18,18 @@ public:
 
         ListNode *odd, *even, *evenHead;
 
-        // 1.
         odd = head;
         even = head->next;
-
-        // 2.
         evenHead = even;
 
         while (even && even->next)
         {
-            // 3.
-            odd->next = odd->next->next;
+            odd->next = even->next;
             even->next = even->next->next;
             odd = odd->next;
             even = even->next;
         }
 
-        // 4.
         odd->next = evenHead;
 
         return head;
